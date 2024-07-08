@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table Calculator</title>
+    <title>Calculator with Table</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -59,7 +59,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Table Calculator</h1>
+        <h1>Calculator of table</h1>
         <input type="number" id="numButtons" placeholder="Enter number of buttons">
         <button onclick="createButtons()">Create Buttons</button>
         <div id="buttonContainer"></div>
@@ -68,17 +68,12 @@
         </div>
         <div id="result">Result: 0</div>
         <footer>
-            The app is created for Testing and Showing skills by Garv To Akif and is completely created by Garv
+            The app is created for Testing and Showing skills of Garv To Akif and is completely created by Garv
         </footer>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            loadState();
-        });
-
         function createButtons() {
             const numButtons = document.getElementById('numButtons').value;
-            localStorage.setItem('numButtons', numButtons);
             renderButtons(numButtons);
         }
 
@@ -90,17 +85,12 @@
                 const button = document.createElement('button');
                 button.textContent = i;
                 button.onclick = toggleButton;
-                if (localStorage.getItem('button-' + i) === 'active') {
-                    button.classList.add('active');
-                }
                 buttonContainer.appendChild(button);
             }
         }
 
         function toggleButton() {
             this.classList.toggle('active');
-            const state = this.classList.contains('active') ? 'active' : '';
-            localStorage.setItem('button-' + this.textContent, state);
         }
 
         function calculateSum() {
@@ -111,16 +101,6 @@
             });
             document.getElementById('result').textContent = 'Result: ' + sum;
         }
-
-        function loadState() {
-            const numButtons = localStorage.getItem('numButtons');
-            if (numButtons) {
-                document.getElementById('numButtons').value = numButtons;
-                renderButtons(numButtons);
-                calculateSum();  // Calculate sum on load
-            }
-        }
     </script>
 </body>
-          </html>
-          
+</html>
